@@ -1,0 +1,25 @@
+{
+  "name": "andy/enums-phps-missing-data-type",
+  "authors": [
+    {
+      "name": "Andy Snell",
+      "email": "andysnell@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.3",
+    "spatie/enum": "^2.3",
+    "myclabs/php-enum": "^1.7",
+    "dbalabka/php-enumeration": "^0.3.0"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "^8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/",
+      "Test\\": "tests/"
+    }
+  }
+}
