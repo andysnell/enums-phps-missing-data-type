@@ -1,7 +1,5 @@
 # Enums: PHP's Missing Data Type
 
-**Latest Slide Deck:** https://slides.com/andysnell/php-world-enums
-
 PHP may not have a native data type for an enumerated type (“enum”), like other 
 programming languages, but there are userland solutions we can leverage to get 
 access to this powerful data type. We’ll see how representing things like 
