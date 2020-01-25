@@ -1,17 +1,17 @@
 <?php
 
-namespace Test;
 
-use App\AccountStatus;
-use App\PaymentResult;
-use App\ReadOnly;
+namespace Test\Cached;
+
+
+use App\Transitions\AccountStatus;
+use App\Cached\PaymentResult;
 use PHPUnit\Framework\TestCase;
 use UnexpectedValueException;
 
 class PaymentResultTest extends TestCase
 {
     /**
-     * Test #1A - Is this something we're going to be able to typehint on?
      * @test
      */
     public function enum_is_instance_of_a_type_declarable_class(): void
@@ -22,7 +22,6 @@ class PaymentResultTest extends TestCase
     }
 
     /**
-     * Test #1B - Check that we only get values defined in our array.
      * @test
      */
     public function enum_will_throw_exception_if_member_not_defined(): void
@@ -32,7 +31,6 @@ class PaymentResultTest extends TestCase
     }
 
     /**
-     * Test #2 - Immutable
      * @test
      * @testWith    ["value"]
      *              ["foobar"]
@@ -40,12 +38,11 @@ class PaymentResultTest extends TestCase
     public function enum_is_immutable($property): void
     {
         $result = PaymentResult::APPROVED();
-        $this->expectException(ReadOnly::class);
+        $this->expectException(\LogicException::class);
         $result->$property = 'declined';
     }
 
     /**
-     * Test #3 - Cached
      * @test
      */
     public function enum_is_cached(): void
@@ -56,7 +53,6 @@ class PaymentResultTest extends TestCase
     }
 
     /**
-     * Test #4A - Comparable
      * @test
      */
     public function enum_is_comparable_to_other_members(): void
@@ -69,7 +65,6 @@ class PaymentResultTest extends TestCase
     }
 
     /**
-     * Test #4B - Comparable
      * @test
      */
     public function enum_is_comparable_to_other_enums(): void
@@ -90,7 +85,6 @@ class PaymentResultTest extends TestCase
     }
 
     /**
-     * Test #5B - Castable
      * @test
      */
     public function enum_can_be_created_from_a_value(): void
@@ -101,7 +95,6 @@ class PaymentResultTest extends TestCase
     }
 
     /**
-     * Test #5A - Castable
      * @test
      */
     public function enum_can_be_cast_to_string(): void
@@ -113,7 +106,6 @@ class PaymentResultTest extends TestCase
 
 
     /**
-     * Test #5D - Castable
      * @test
      */
     public function enum_will_throw_exception_if_value_not_defined(): void
@@ -123,10 +115,9 @@ class PaymentResultTest extends TestCase
     }
 
     /**
-     * Test #6 - Serializable
      * @test
      */
-    public function enum_is_serializable(): void
+    public function serialized_enums_are_not_equal(): void
     {
         $result = PaymentResult::APPROVED();
         $serialized = serialize($result);

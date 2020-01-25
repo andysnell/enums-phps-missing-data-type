@@ -7,7 +7,7 @@
     }
   ],
   "require": {
-    "php": "^7.3",
+    "php": "^7.4",
     "spatie/enum": "^2.3",
     "myclabs/php-enum": "^1.7",
     "dbalabka/php-enumeration": "^0.3.0"

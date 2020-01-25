@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Simple;
 
 /**
  * @method static PaymentResult APPROVED()
@@ -16,6 +16,4 @@ final class PaymentResult extends Enum
         'DECLINED' => 'declined',
         'ERROR' => 'error',
     ];
-
-    protected static $cache = [];
 }

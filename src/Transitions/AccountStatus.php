@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Transitions;
 
 /**
  * @method static AccountStatus ACCEPTED()
@@ -14,8 +14,10 @@ namespace App;
  * @method static AccountStatus DEACTIVATING()
  * @method static AccountStatus DEACTIVATED()
  */
-final class AccountStatus extends Enum
+final class AccountStatus extends FiniteStateMachineEnum
 {
+    protected static $cache = [];
+
     protected static $values = [
         'ACCEPTED' => 'accepted',
         'APPROVED' => 'approved',
@@ -27,29 +29,14 @@ final class AccountStatus extends Enum
         'DEACTIVATED' => 'deactivated',
     ];
 
-    protected static $cache = [];
-
     protected static $transitions = [
-        'accepted' => ['APPROVED', 'DECLINED'],
-        'approved' => ['ACTIVATING'],
+        'accepted' => ['approved', 'declined'],
+        'approved' => ['activating'],
         'declined' => [],
-        'activating' => ['ACTIVATING_FAILED', 'ACTIVE'],
-        'activating_failed' => ['ACTIVATING', 'DECLINED'],
-        'active' => ['DEACTIVATING'],
-        'deactivating' => ['ACTIVE', 'DEACTIVATED'],
-        'deactivated' => ['ACTIVATING'],
+        'activating' => ['activating_failed', 'active'],
+        'activating_failed' => ['activating', 'declined'],
+        'active' => ['deactivating'],
+        'deactivating' => ['active', 'deactivated'],
+        'deactivated' => ['activating'],
     ];
-
-    /**
-     * @return AccountStatus[]
-     */
-    public function getTransitions(): array
-    {
-        return array_map([__CLASS__, 'getInstance'], self::$transitions[$this->value]);
-    }
-
-    public function canTransitionTo(AccountStatus $account_status): bool
-    {
-        return in_array($account_status, $this->getTransitions());
-    }
 }
