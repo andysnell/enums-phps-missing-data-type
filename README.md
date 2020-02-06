@@ -66,3 +66,6 @@ docker run --rm -it -v $PWD:/app enums-example vendor/bin/phpunit tests
 ### Other Resources
 * [Wikipedia on Enumerated Types](https://en.wikipedia.org/wiki/Enumerated_type)
 * [Martin Fowler - Value Object](https://martinfowler.com/bliki/ValueObject.html)
+* [Larry Garfield - Type Matching in PHP](https://steemit.com/php/@crell/type-matching-in-php)
+* [Brent Roose - Enums without enums in PHP](https://stitcher.io/blog/enums-without-enums)
+
