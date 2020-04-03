@@ -12,8 +12,8 @@ imposing-sounding “finite state machine” by using using immutable enum objec
 to regulate the transitions between member elements.
 
 ## Latest Slides
-[![Enums: The Missing Data Type](slide_deck_cover.png)](https://bit.ly/37AGwtD)
-**PHPBenelux 2020:** [https://bit.ly/37AGwtD](https://bit.ly/37AGwtD)
+[![Enums: The Missing Data Type](slide_deck_cover.png)](https://bit.ly/2UCaZDo)
+**Slide Deck Link:** [https://bit.ly/37AGwtD](https://bit.ly/2UCaZDo)
 
 ### Running Code Examples
 
